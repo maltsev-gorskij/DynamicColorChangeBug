@@ -50,27 +50,14 @@ class MainActivity : ComponentActivity() {
                     screen(NavigationTree.FirstScreen.name) {
                         val rootController = LocalRootController.current
 
-                        CenteredContent {
-                            Button(
-                                onClick = { rootController.push(NavigationTree.SecondScreen.name) }
-                            ) {
-                                Text("Next Screen")
-                            }
-
-                            Spacer(Modifier.height(8.dp))
-
-                            Button(
-                                onClick = { mainViewModel.setDarkTransitionBackground() }
-                            ) {
-                                Text("Set Dark Transition Background")
-                            }
-                        }
+                        FirstScreenContent(
+                            onNavigateClick = { rootController.push(NavigationTree.SecondScreen.name) },
+                            onColorChangeClick = mainViewModel::setDarkTransitionBackground
+                        )
                     }
 
                     screen(NavigationTree.SecondScreen.name) {
-                        CenteredContent {
-                            Greeting("Android")
-                        }
+                        SecondScreenContent()
                     }
                 }
             }
@@ -94,6 +81,35 @@ fun CenteredContent(
         ) {
             content()
         }
+    }
+}
+
+@Composable
+fun FirstScreenContent(
+    onNavigateClick: () -> Unit,
+    onColorChangeClick: () -> Unit
+) {
+    CenteredContent {
+        Button(
+            onClick = onNavigateClick
+        ) {
+            Text("Next Screen")
+        }
+
+        Spacer(Modifier.height(8.dp))
+
+        Button(
+            onClick = onColorChangeClick
+        ) {
+            Text("Set Dark Transition Background")
+        }
+    }
+}
+
+@Composable
+fun SecondScreenContent() {
+    CenteredContent {
+        Greeting("Android")
     }
 }
 
