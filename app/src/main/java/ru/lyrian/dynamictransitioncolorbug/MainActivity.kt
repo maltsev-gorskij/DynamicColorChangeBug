@@ -67,7 +67,6 @@ class MainActivity : ComponentActivity() {
                         }
                     }
 
-
                     screen(NavigationTree.SecondScreen.name) {
                         CenteredContent {
                             Greeting("Android")
