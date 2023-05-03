@@ -1,5 +1,5 @@
 ## Repository information
-Minimal example to reproduce dynamic transition background color change using Odyssey library 
+Minimal example to reproduce bug in dynamic transition background color change using Odyssey library 
 
 ## Description
 In one of my applications, there was a need to implement a dynamic theme change in the application.
